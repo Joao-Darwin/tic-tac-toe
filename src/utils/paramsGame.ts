@@ -1,9 +1,9 @@
 import { Dimensions } from "react-native"
 
 const params = {
-    quantityField: 3,
+    quantityFieldForLine: 3,
     getWidthField(): number {
-        return Math.floor(Dimensions.get('window').width / this.quantityField)
+        return Math.floor(Dimensions.get('window').width / this.quantityFieldForLine)
     },
     getHeigthField(): number {
         const heightHalfWindow = Math.floor(Dimensions.get("window").height) / 2;
