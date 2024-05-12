@@ -26,19 +26,27 @@ function App(): React.JSX.Element {
 
   const [timeToPlay, setTimeToPlay] = useState('X');
 
+  const onPressField = () => {
+    if (timeToPlay === 'X') {
+      setTimeToPlay('O');
+    } else {
+      setTimeToPlay('X')
+    }
+  }
+
   return (
     <SafeAreaView style={style.App}>
       <Text style={style.Text}>Vez de {timeToPlay}</Text>
       <Board>
-        <Field moveToShow={timeToPlay} borderRight borderBottom />
-        <Field moveToShow={timeToPlay} borderBottom />
-        <Field moveToShow={timeToPlay} borderBottom borderLeft />
-        <Field moveToShow={timeToPlay} borderRight borderBottom />
-        <Field moveToShow={timeToPlay} borderBottom />
-        <Field moveToShow={timeToPlay} borderLeft borderBottom />
-        <Field moveToShow={timeToPlay} borderRight />
-        <Field moveToShow={timeToPlay} />
-        <Field moveToShow={timeToPlay} borderLeft />
+        <Field onPress={onPressField} moveToShow={timeToPlay} borderRight borderBottom />
+        <Field onPress={onPressField} moveToShow={timeToPlay} borderBottom />
+        <Field onPress={onPressField} moveToShow={timeToPlay} borderBottom borderLeft />
+        <Field onPress={onPressField} moveToShow={timeToPlay} borderRight borderBottom />
+        <Field onPress={onPressField} moveToShow={timeToPlay} borderBottom />
+        <Field onPress={onPressField} moveToShow={timeToPlay} borderLeft borderBottom />
+        <Field onPress={onPressField} moveToShow={timeToPlay} borderRight />
+        <Field onPress={onPressField} moveToShow={timeToPlay} />
+        <Field onPress={onPressField} moveToShow={timeToPlay} borderLeft />
       </Board>
     </SafeAreaView>
   );

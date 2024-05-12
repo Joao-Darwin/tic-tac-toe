@@ -8,6 +8,7 @@ interface Props {
     borderRight?: boolean,
     borderBottom?: boolean,
     borderLeft?: boolean,
+    onPress: Function
 }
 
 const style = StyleSheet.create({
@@ -36,9 +37,10 @@ const style = StyleSheet.create({
     }
 })
 
-function Field({ moveToShow, borderTop, borderRight, borderBottom, borderLeft }: Props): React.JSX.Element {
+function Field({ moveToShow, borderTop, borderRight, borderBottom, borderLeft, onPress }: Props): React.JSX.Element {
 
     const [showMove, setShowMove] = useState(false);
+    const [moveToShowIntern, setMoveToShowIntern] = useState('');
 
     const styleField: { [key: string]: any } = [style.Field];
 
@@ -47,10 +49,16 @@ function Field({ moveToShow, borderTop, borderRight, borderBottom, borderLeft }:
     if (borderBottom) styleField.push(style.FieldWithBorderBottom);
     if (borderLeft) styleField.push(style.FieldWithBorderLeft);
 
+    const onPressField = () => {
+        setMoveToShowIntern(moveToShow);
+        setShowMove(true);
+        onPress();
+    }
+
     return (
-        <TouchableWithoutFeedback onPress={() => setShowMove(true)}>
+        <TouchableWithoutFeedback onPress={onPressField}>
             <View style={styleField}>
-                {showMove && <Text style={style.Text}>{moveToShow}</Text>}
+                {showMove && <Text style={style.Text}>{moveToShowIntern}</Text>}
             </View>
         </TouchableWithoutFeedback>
     )
