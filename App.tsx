@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import {
   SafeAreaView,
-  StyleSheet
+  StyleSheet,
+  Text
 } from 'react-native';
 import Board from './src/components/Board';
 import Field from './src/components/Field';
@@ -12,6 +13,12 @@ const style = StyleSheet.create({
     backgroundColor: '#020202',
     justifyContent: 'flex-end',
     alignItems: 'center'
+  },
+  Text: {
+    fontWeight: '600',
+    fontSize: 30,
+    color: '#FFF',
+    bottom: 10
   }
 })
 
@@ -21,6 +28,7 @@ function App(): React.JSX.Element {
 
   return (
     <SafeAreaView style={style.App}>
+      <Text style={style.Text}>Vez de {timeToPlay}</Text>
       <Board>
         <Field moveToShow={timeToPlay} borderRight borderBottom />
         <Field moveToShow={timeToPlay} borderBottom />
