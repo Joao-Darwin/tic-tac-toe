@@ -50,9 +50,11 @@ function Field({ moveToShow, borderTop, borderRight, borderBottom, borderLeft, o
     if (borderLeft) styleField.push(style.FieldWithBorderLeft);
 
     const onPressField = () => {
-        setMoveToShowIntern(moveToShow);
-        setShowMove(true);
-        onPress();
+        if (moveToShowIntern === '') {
+            setMoveToShowIntern(moveToShow);
+            setShowMove(true);
+            onPress();
+        }
     }
 
     return (
