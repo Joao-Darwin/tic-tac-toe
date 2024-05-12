@@ -19,16 +19,16 @@ const style = StyleSheet.create({
         height: params.getHeigthField(),
     },
     FieldWithBorderTop: {
-        borderTopWidth: 7,
+        borderTopWidth: params.borderWidth,
     },
     FieldWithBorderRigth: {
-        borderRightWidth: 7,
+        borderRightWidth: params.borderWidth,
     },
     FieldWithBorderBottom: {
-        borderBottomWidth: 7,
+        borderBottomWidth: params.borderWidth,
     },
     FieldWithBorderLeft: {
-        borderLeftWidth: 7,
+        borderLeftWidth: params.borderWidth,
     },
     Text: {
         fontSize: 100,

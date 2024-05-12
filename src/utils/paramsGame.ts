@@ -1,6 +1,7 @@
 import { Dimensions } from "react-native"
 
 const params = {
+    borderWidth: 7,
     quantityFieldForLine: 3,
     getWidthField(): number {
         return Math.floor(Dimensions.get('window').width / this.quantityFieldForLine)
