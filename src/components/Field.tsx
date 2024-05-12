@@ -8,7 +8,9 @@ interface Props {
     borderRight?: boolean,
     borderBottom?: boolean,
     borderLeft?: boolean,
-    onPress: Function
+    row: number,
+    column: number,
+    onPress: ((row: number, column: number) => void)
 }
 
 const style = StyleSheet.create({
@@ -37,7 +39,7 @@ const style = StyleSheet.create({
     }
 })
 
-function Field({ moveToShow, borderTop, borderRight, borderBottom, borderLeft, onPress }: Props): React.JSX.Element {
+function Field({ moveToShow, borderTop, borderRight, borderBottom, borderLeft, row, column, onPress }: Props): React.JSX.Element {
 
     const [showMove, setShowMove] = useState(false);
     const [moveToShowIntern, setMoveToShowIntern] = useState('');
@@ -53,7 +55,7 @@ function Field({ moveToShow, borderTop, borderRight, borderBottom, borderLeft, o
         if (moveToShowIntern === '') {
             setMoveToShowIntern(moveToShow);
             setShowMove(true);
-            onPress();
+            onPress(row, column);
         }
     }
 

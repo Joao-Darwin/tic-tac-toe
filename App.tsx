@@ -6,6 +6,7 @@ import {
 } from 'react-native';
 import Board from './src/components/Board';
 import Field from './src/components/Field';
+import gameLogic from './src/utils/gameLogic';
 
 const style = StyleSheet.create({
   App: {
@@ -25,12 +26,17 @@ const style = StyleSheet.create({
 function App(): React.JSX.Element {
 
   const [timeToPlay, setTimeToPlay] = useState('X');
+  const [board, setBoard] = useState<string[][]>(gameLogic.createVoidBoard())
 
-  const onPressField = () => {
+  const onPressField = (row: number, column: number) => {
     if (timeToPlay === 'X') {
       setTimeToPlay('O');
+      board[row][column] = 'X'
+      setBoard(board);
     } else {
       setTimeToPlay('X')
+      board[row][column] = 'O'
+      setBoard(board);
     }
   }
 
@@ -38,15 +44,15 @@ function App(): React.JSX.Element {
     <SafeAreaView style={style.App}>
       <Text style={style.Text}>Vez de {timeToPlay}</Text>
       <Board>
-        <Field onPress={onPressField} moveToShow={timeToPlay} borderRight borderBottom />
-        <Field onPress={onPressField} moveToShow={timeToPlay} borderBottom />
-        <Field onPress={onPressField} moveToShow={timeToPlay} borderBottom borderLeft />
-        <Field onPress={onPressField} moveToShow={timeToPlay} borderRight borderBottom />
-        <Field onPress={onPressField} moveToShow={timeToPlay} borderBottom />
-        <Field onPress={onPressField} moveToShow={timeToPlay} borderLeft borderBottom />
-        <Field onPress={onPressField} moveToShow={timeToPlay} borderRight />
-        <Field onPress={onPressField} moveToShow={timeToPlay} />
-        <Field onPress={onPressField} moveToShow={timeToPlay} borderLeft />
+        <Field row={0} column={0} onPress={onPressField} moveToShow={timeToPlay} borderRight borderBottom />
+        <Field row={0} column={1} onPress={onPressField} moveToShow={timeToPlay} borderBottom />
+        <Field row={0} column={2} onPress={onPressField} moveToShow={timeToPlay} borderBottom borderLeft />
+        <Field row={1} column={0} onPress={onPressField} moveToShow={timeToPlay} borderRight borderBottom />
+        <Field row={1} column={1} onPress={onPressField} moveToShow={timeToPlay} borderBottom />
+        <Field row={1} column={2} onPress={onPressField} moveToShow={timeToPlay} borderLeft borderBottom />
+        <Field row={2} column={0} onPress={onPressField} moveToShow={timeToPlay} borderRight />
+        <Field row={2} column={1} onPress={onPressField} moveToShow={timeToPlay} />
+        <Field row={2} column={2} onPress={onPressField} moveToShow={timeToPlay} borderLeft />
       </Board>
     </SafeAreaView>
   );
