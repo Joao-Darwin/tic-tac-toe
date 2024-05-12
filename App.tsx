@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import {
+  Alert,
   SafeAreaView,
   StyleSheet,
   Text
@@ -37,6 +38,14 @@ function App(): React.JSX.Element {
       setTimeToPlay('X')
       board[row][column] = 'O'
       setBoard(board);
+    }
+
+    if(gameLogic.checksIfWon(board)) {
+      if(timeToPlay === 'X') {
+        Alert.alert("Jodagor 01 ganhou!");
+      } else {
+        Alert.alert("Jogador 02 ganhou!");
+      }
     }
   }
 
