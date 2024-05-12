@@ -22,13 +22,13 @@ function App(): React.JSX.Element {
   return (
     <SafeAreaView style={style.App}>
       <Board>
-        <Field moveToShow={timeToPlay} borderRigth borderBottom />
+        <Field moveToShow={timeToPlay} borderRight borderBottom />
         <Field moveToShow={timeToPlay} borderBottom />
         <Field moveToShow={timeToPlay} borderBottom borderLeft />
-        <Field moveToShow={timeToPlay} borderRigth borderBottom />
+        <Field moveToShow={timeToPlay} borderRight borderBottom />
         <Field moveToShow={timeToPlay} borderBottom />
         <Field moveToShow={timeToPlay} borderLeft borderBottom />
-        <Field moveToShow={timeToPlay} borderRigth />
+        <Field moveToShow={timeToPlay} borderRight />
         <Field moveToShow={timeToPlay} />
         <Field moveToShow={timeToPlay} borderLeft />
       </Board>

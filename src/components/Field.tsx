@@ -5,7 +5,7 @@ import { useState } from "react";
 interface Props {
     moveToShow: string,
     borderTop?: boolean,
-    borderRigth?: boolean,
+    borderRight?: boolean,
     borderBottom?: boolean,
     borderLeft?: boolean,
 }
@@ -21,7 +21,7 @@ const style = StyleSheet.create({
     FieldWithBorderTop: {
         borderTopWidth: params.borderWidth,
     },
-    FieldWithBorderRigth: {
+    FieldWithBorderRight: {
         borderRightWidth: params.borderWidth,
     },
     FieldWithBorderBottom: {
@@ -36,14 +36,14 @@ const style = StyleSheet.create({
     }
 })
 
-function Field({ moveToShow, borderTop, borderRigth, borderBottom, borderLeft }: Props): React.JSX.Element {
+function Field({ moveToShow, borderTop, borderRight, borderBottom, borderLeft }: Props): React.JSX.Element {
 
     const [showMove, setShowMove] = useState(false);
 
     const styleField: { [key: string]: any } = [style.Field];
 
     if (borderTop) styleField.push(style.FieldWithBorderTop);
-    if (borderRigth) styleField.push(style.FieldWithBorderRigth);
+    if (borderRight) styleField.push(style.FieldWithBorderRight);
     if (borderBottom) styleField.push(style.FieldWithBorderBottom);
     if (borderLeft) styleField.push(style.FieldWithBorderLeft);
 
