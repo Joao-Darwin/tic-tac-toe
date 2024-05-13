@@ -34,12 +34,12 @@ function App(): React.JSX.Element {
     if (timeToPlay === 'X') {
       setTimeToPlay('O');
       board[row][column] = 'X'
-      setBoard(board);
     } else {
       setTimeToPlay('X')
       board[row][column] = 'O'
-      setBoard(board);
     }
+
+    setBoard(board);
 
     if(gameLogic.checksIfWon(board)) {
       if(timeToPlay === 'X') {
