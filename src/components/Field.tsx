@@ -3,7 +3,7 @@ import params from "../utils/paramsGame";
 import { useState } from "react";
 
 interface Props {
-    moveToShow: string,
+    board: string[][],
     borderTop?: boolean,
     borderRight?: boolean,
     borderBottom?: boolean,
@@ -39,10 +39,9 @@ const style = StyleSheet.create({
     }
 })
 
-function Field({ moveToShow, borderTop, borderRight, borderBottom, borderLeft, row, column, onPress }: Props): React.JSX.Element {
+function Field({ board, borderTop, borderRight, borderBottom, borderLeft, row, column, onPress }: Props): React.JSX.Element {
 
     const [showMove, setShowMove] = useState(false);
-    const [moveToShowIntern, setMoveToShowIntern] = useState('');
 
     const styleField: { [key: string]: any } = [style.Field];
 
@@ -52,8 +51,7 @@ function Field({ moveToShow, borderTop, borderRight, borderBottom, borderLeft, r
     if (borderLeft) styleField.push(style.FieldWithBorderLeft);
 
     const onPressField = () => {
-        if (moveToShowIntern === '') {
-            setMoveToShowIntern(moveToShow);
+        if (board[row][column] === '') {
             setShowMove(true);
             onPress(row, column);
         }
@@ -62,7 +60,7 @@ function Field({ moveToShow, borderTop, borderRight, borderBottom, borderLeft, r
     return (
         <TouchableWithoutFeedback onPress={onPressField}>
             <View style={styleField}>
-                {showMove && <Text style={style.Text}>{moveToShowIntern}</Text>}
+                {board[row][column] !== '' && <Text style={style.Text}>{board[row][column]}</Text>}
             </View>
         </TouchableWithoutFeedback>
     )
