@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Alert,
   SafeAreaView,
@@ -30,30 +30,30 @@ function App(): React.JSX.Element {
   const [board, setBoard] = useState<string[][]>(gameLogic.createVoidBoard())
 
   const onPressField = (row: number, column: number) => {
-    if (timeToPlay === 'X') {
-      setTimeToPlay('O');
-      board[row][column] = 'X'
-    } else {
-      setTimeToPlay('X')
-      board[row][column] = 'O'
-    }
+    const newBoard = board.map((r, rowIndex) => 
+      r.map((cell, colIndex) => {
+        if (rowIndex === row && colIndex === column) {
+          return timeToPlay;
+        }
+        return cell;
+      })
+    );
 
-    setBoard(board);
+    setBoard(newBoard);
+    setTimeToPlay(prev => prev === 'X' ? 'O' : 'X');
+  };
 
+  useEffect(() => {
     if (gameLogic.checksIfWon(board)) {
-      if (timeToPlay === 'X') {
-        Alert.alert("Jodagor 01 ganhou!", undefined, buttonsOnAlert);
-        setTimeToPlay('X');
-      } else {
-        Alert.alert("Jogador 02 ganhou!", undefined, buttonsOnAlert);
-        setTimeToPlay('O');
-      }
-    }
-
-    if (gameLogic.checksIfDrawn(board)) {
+      Alert.alert(
+        `Jogador ${timeToPlay === 'X' ? '01' : '02'} ganhou!`,
+        undefined,
+        buttonsOnAlert
+      );
+    } else if (gameLogic.checksIfDrawn(board)) {
       Alert.alert("Empate", undefined, buttonsOnAlert);
     }
-  }
+  }, [board]);
 
   const buttonsOnAlert = [
     {
@@ -64,7 +64,7 @@ function App(): React.JSX.Element {
       text: 'Ver',
       onPress: () => { }
     },
-  ]
+  ];
 
   const restartBoard = () => {
     setBoard(gameLogic.createVoidBoard());
