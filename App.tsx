@@ -50,6 +50,10 @@ function App(): React.JSX.Element {
         setTimeToPlay('O');
       }
     }
+
+    if(gameLogic.checksIfDrawn(board)) {
+      Alert.alert("Empate");
+    }
   }
 
   return (
