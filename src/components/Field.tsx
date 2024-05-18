@@ -41,8 +41,6 @@ const style = StyleSheet.create({
 
 function Field({ board, borderTop, borderRight, borderBottom, borderLeft, row, column, onPress }: Props): React.JSX.Element {
 
-    const [showMove, setShowMove] = useState(false);
-
     const styleField: { [key: string]: any } = [style.Field];
 
     if (borderTop) styleField.push(style.FieldWithBorderTop);
@@ -52,7 +50,6 @@ function Field({ board, borderTop, borderRight, borderBottom, borderLeft, row, c
 
     const onPressField = () => {
         if (board[row][column] === '') {
-            setShowMove(true);
             onPress(row, column);
         }
     }
