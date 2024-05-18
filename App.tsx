@@ -46,7 +46,7 @@ function App(): React.JSX.Element {
   useEffect(() => {
     if (gameLogic.checksIfWon(board)) {
       Alert.alert(
-        `Jogador ${timeToPlay === 'X' ? '01' : '02'} ganhou!`,
+        `Jogador ${timeToPlay === 'X' ? '02' : '01'} ganhou!`,
         undefined,
         buttonsOnAlert
       );
