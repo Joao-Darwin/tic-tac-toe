@@ -41,8 +41,8 @@ function App(): React.JSX.Element {
 
     setBoard(board);
 
-    if(gameLogic.checksIfWon(board)) {
-      if(timeToPlay === 'X') {
+    if (gameLogic.checksIfWon(board)) {
+      if (timeToPlay === 'X') {
         Alert.alert("Jodagor 01 ganhou!");
         setTimeToPlay('X');
       } else {
@@ -51,7 +51,7 @@ function App(): React.JSX.Element {
       }
     }
 
-    if(gameLogic.checksIfDrawn(board)) {
+    if (gameLogic.checksIfDrawn(board)) {
       Alert.alert("Empate");
     }
   }
