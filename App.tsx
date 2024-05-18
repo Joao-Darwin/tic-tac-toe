@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import {
   Alert,
-  Button,
   SafeAreaView,
   StyleSheet,
   Text
@@ -43,17 +42,32 @@ function App(): React.JSX.Element {
 
     if (gameLogic.checksIfWon(board)) {
       if (timeToPlay === 'X') {
-        Alert.alert("Jodagor 01 ganhou!");
+        Alert.alert("Jodagor 01 ganhou!", undefined, buttonsOnAlert);
         setTimeToPlay('X');
       } else {
-        Alert.alert("Jogador 02 ganhou!");
+        Alert.alert("Jogador 02 ganhou!", undefined, buttonsOnAlert);
         setTimeToPlay('O');
       }
     }
 
     if (gameLogic.checksIfDrawn(board)) {
-      Alert.alert("Empate");
+      Alert.alert("Empate", undefined, buttonsOnAlert);
     }
+  }
+
+  const buttonsOnAlert = [
+    {
+      text: 'Recomeçar',
+      onPress: () => restartBoard(),
+    },
+    {
+      text: 'Ver',
+      onPress: () => { }
+    },
+  ]
+
+  const restartBoard = () => {
+    setBoard(gameLogic.createVoidBoard());
   }
 
   return (
