@@ -26,11 +26,14 @@ const style = StyleSheet.create({
 
 function App(): React.JSX.Element {
 
+  const [observationBoardMode, setObservationBoardMode] = useState(false);
   const [timeToPlay, setTimeToPlay] = useState('X');
   const [board, setBoard] = useState<string[][]>(gameLogic.createVoidBoard())
 
   const onPressField = (row: number, column: number) => {
-    const newBoard = board.map((r, rowIndex) => 
+    if (observationBoardMode) return;
+
+    const newBoard = board.map((r, rowIndex) =>
       r.map((cell, colIndex) => {
         if (rowIndex === row && colIndex === column) {
           return timeToPlay;
@@ -62,7 +65,7 @@ function App(): React.JSX.Element {
     },
     {
       text: 'Ver',
-      onPress: () => { }
+      onPress: () => setObservationBoardMode(true)
     },
   ];
 
