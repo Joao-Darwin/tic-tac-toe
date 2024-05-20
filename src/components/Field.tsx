@@ -35,7 +35,13 @@ const style = StyleSheet.create({
     },
     Text: {
         fontSize: 100,
-        color: '#FFF'
+        fontWeight: "700"
+    },
+    TextWhenX: {
+        color: '#FF6F61'
+    },
+    TextWhenO: {
+        color: '#6EC6FF'
     }
 })
 
@@ -48,6 +54,10 @@ function Field({ board, borderTop, borderRight, borderBottom, borderLeft, row, c
     if (borderBottom) styleField.push(style.FieldWithBorderBottom);
     if (borderLeft) styleField.push(style.FieldWithBorderLeft);
 
+    const styleText: { [key: string]: any } = [style.Text];
+
+    styleText.push(board[row][column] === 'X' ? style.TextWhenX : style.TextWhenO);
+
     const onPressField = () => {
         if (board[row][column] === '') {
             onPress(row, column);
@@ -57,7 +67,7 @@ function Field({ board, borderTop, borderRight, borderBottom, borderLeft, row, c
     return (
         <TouchableWithoutFeedback onPress={onPressField}>
             <View style={styleField}>
-                {board[row][column] !== '' && <Text style={style.Text}>{board[row][column]}</Text>}
+                {board[row][column] !== '' && <Text style={styleText}>{board[row][column]}</Text>}
             </View>
         </TouchableWithoutFeedback>
     )
