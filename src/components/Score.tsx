@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     playerText: {
-        fontSize: 18,
+        fontSize: 20,
         fontWeight: '500',
     },
     scoreText: {
