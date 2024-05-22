@@ -18,19 +18,19 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         alignItems: 'center',
         margin: 10,
-      },
-      scoreBox: {
+    },
+    scoreBox: {
         alignItems: 'center',
-      },
-      playerText: {
+    },
+    playerText: {
         fontSize: 18,
         fontWeight: '500',
-      },
-      scoreText: {
+    },
+    scoreText: {
         fontSize: 40,
         fontWeight: 'bold',
         color: '#2d3436',
-      },
+    },
 })
 
 function Score({ name, score }: Props): React.JSX.Element {

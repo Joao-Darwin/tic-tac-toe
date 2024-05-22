@@ -65,11 +65,11 @@ function App(): React.JSX.Element {
         buttonsOnAlert
       );
 
-      timeToPlay === 'X' ? setScorePlayer02(prev => prev+1) : setScorePlayer01(prev => prev+1);
+      timeToPlay === 'X' ? setScorePlayer02(prev => prev + 1) : setScorePlayer01(prev => prev + 1);
     } else if (gameLogic.checksIfDrawn(board)) {
       Alert.alert("Empate", undefined, buttonsOnAlert);
-      setScorePlayer01(prev => prev+0.5)
-      setScorePlayer02(prev => prev+0.5)
+      setScorePlayer01(prev => prev + 0.5)
+      setScorePlayer02(prev => prev + 0.5)
     }
   }, [board]);
 
