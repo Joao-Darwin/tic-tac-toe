@@ -35,6 +35,8 @@ const style = StyleSheet.create({
 
 function App(): React.JSX.Element {
 
+  const [scorePlayer01, setScorePlayer01] = useState(0);
+  const [scorePlayer02, setScorePlayer02] = useState(0);
   const [observationBoardMode, setObservationBoardMode] = useState(false);
   const [timeToPlay, setTimeToPlay] = useState('X');
   const [board, setBoard] = useState<string[][]>(gameLogic.createVoidBoard())
@@ -62,8 +64,12 @@ function App(): React.JSX.Element {
         undefined,
         buttonsOnAlert
       );
+
+      timeToPlay === 'X' ? setScorePlayer02(prev => prev+1) : setScorePlayer01(prev => prev+1);
     } else if (gameLogic.checksIfDrawn(board)) {
       Alert.alert("Empate", undefined, buttonsOnAlert);
+      setScorePlayer01(prev => prev+0.5)
+      setScorePlayer02(prev => prev+0.5)
     }
   }, [board]);
 
@@ -85,8 +91,8 @@ function App(): React.JSX.Element {
   return (
     <SafeAreaView style={style.App}>
       <View style={style.ScoreBoard}>
-        <Score name='Player 01' score={0} />
-        <Score name='Player 02' score={3} />
+        <Score name='Player 01' score={scorePlayer01} />
+        <Score name='Player 02' score={scorePlayer02} />
       </View>
       <Text style={style.Text}>Vez de {timeToPlay}</Text>
       <Board>
