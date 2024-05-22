@@ -1,20 +1,29 @@
 import React, { useEffect, useState } from 'react';
 import {
   Alert,
+  Dimensions,
   SafeAreaView,
   StyleSheet,
-  Text
+  Text,
+  View
 } from 'react-native';
 import Board from './src/components/Board';
 import Field from './src/components/Field';
 import gameLogic from './src/utils/gameLogic';
+import Score from './src/components/Score';
 
 const style = StyleSheet.create({
   App: {
     flex: 1,
     backgroundColor: '#020202',
     justifyContent: 'flex-end',
-    alignItems: 'center'
+    alignItems: 'center',
+    gap: 80
+  },
+  ScoreBoard: {
+    width: Dimensions.get('screen').width,
+    flexDirection: 'row',
+    justifyContent: 'space-around'
   },
   Text: {
     fontWeight: '600',
@@ -75,6 +84,10 @@ function App(): React.JSX.Element {
 
   return (
     <SafeAreaView style={style.App}>
+      <View style={style.ScoreBoard}>
+        <Score name='Player 01' score={0} />
+        <Score name='Player 02' score={3} />
+      </View>
       <Text style={style.Text}>Vez de {timeToPlay}</Text>
       <Board>
         <Field board={board} row={0} column={0} onPress={onPressField} borderRight borderBottom />
