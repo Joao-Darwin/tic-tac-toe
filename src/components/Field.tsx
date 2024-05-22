@@ -3,7 +3,7 @@ import params from "../utils/paramsGame";
 import { useState } from "react";
 
 interface Props {
-    board: string[][],
+    boardValueField: string,
     borderTop?: boolean,
     borderRight?: boolean,
     borderBottom?: boolean,
@@ -45,7 +45,7 @@ const style = StyleSheet.create({
     }
 })
 
-function Field({ board, borderTop, borderRight, borderBottom, borderLeft, row, column, onPress }: Props): React.JSX.Element {
+function Field({ boardValueField, borderTop, borderRight, borderBottom, borderLeft, row, column, onPress }: Props): React.JSX.Element {
 
     const styleField: { [key: string]: any } = [style.Field];
 
@@ -56,10 +56,10 @@ function Field({ board, borderTop, borderRight, borderBottom, borderLeft, row, c
 
     const styleText: { [key: string]: any } = [style.Text];
 
-    styleText.push(board[row][column] === 'X' ? style.TextWhenX : style.TextWhenO);
+    styleText.push(boardValueField === 'X' ? style.TextWhenX : style.TextWhenO);
 
     const onPressField = () => {
-        if (board[row][column] === '') {
+        if (boardValueField === '') {
             onPress(row, column);
         }
     }
@@ -67,7 +67,7 @@ function Field({ board, borderTop, borderRight, borderBottom, borderLeft, row, c
     return (
         <TouchableWithoutFeedback onPress={onPressField}>
             <View style={styleField}>
-                {board[row][column] !== '' && <Text style={styleText}>{board[row][column]}</Text>}
+                {boardValueField !== '' && <Text style={styleText}>{boardValueField}</Text>}
             </View>
         </TouchableWithoutFeedback>
     )

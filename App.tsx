@@ -96,15 +96,15 @@ function App(): React.JSX.Element {
       </View>
       <Text style={style.Text}>Vez de {timeToPlay}</Text>
       <Board>
-        <Field board={board} row={0} column={0} onPress={onPressField} borderRight borderBottom />
-        <Field board={board} row={0} column={1} onPress={onPressField} borderBottom />
-        <Field board={board} row={0} column={2} onPress={onPressField} borderBottom borderLeft />
-        <Field board={board} row={1} column={0} onPress={onPressField} borderRight borderBottom />
-        <Field board={board} row={1} column={1} onPress={onPressField} borderBottom />
-        <Field board={board} row={1} column={2} onPress={onPressField} borderLeft borderBottom />
-        <Field board={board} row={2} column={0} onPress={onPressField} borderRight />
-        <Field board={board} row={2} column={1} onPress={onPressField} />
-        <Field board={board} row={2} column={2} onPress={onPressField} borderLeft />
+        <Field boardValueField={board[0][0]} row={0} column={0} onPress={onPressField} borderRight borderBottom />
+        <Field boardValueField={board[0][1]} row={0} column={1} onPress={onPressField} borderBottom />
+        <Field boardValueField={board[0][2]} row={0} column={2} onPress={onPressField} borderBottom borderLeft />
+        <Field boardValueField={board[1][0]} row={1} column={0} onPress={onPressField} borderRight borderBottom />
+        <Field boardValueField={board[1][1]} row={1} column={1} onPress={onPressField} borderBottom />
+        <Field boardValueField={board[1][2]} row={1} column={2} onPress={onPressField} borderLeft borderBottom />
+        <Field boardValueField={board[2][0]} row={2} column={0} onPress={onPressField} borderRight />
+        <Field boardValueField={board[2][1]} row={2} column={1} onPress={onPressField} />
+        <Field boardValueField={board[2][2]} row={2} column={2} onPress={onPressField} borderLeft />
       </Board>
     </SafeAreaView>
   );
