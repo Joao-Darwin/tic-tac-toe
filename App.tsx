@@ -15,7 +15,7 @@ import Score from './src/components/Score';
 const style = StyleSheet.create({
   App: {
     flex: 1,
-    backgroundColor: '#020202',
+    backgroundColor: '#e0e0e0',
     justifyContent: 'flex-end',
     alignItems: 'center',
     gap: 80
@@ -28,7 +28,7 @@ const style = StyleSheet.create({
   Text: {
     fontWeight: '600',
     fontSize: 30,
-    color: '#FFF',
+    color: '#000',
     bottom: 10
   }
 })

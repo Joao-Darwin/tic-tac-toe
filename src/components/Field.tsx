@@ -17,7 +17,7 @@ const style = StyleSheet.create({
     Field: {
         justifyContent: 'center',
         alignItems: 'center',
-        borderColor: 'white',
+        borderColor: 'black',
         width: params.getWidthField(),
         height: params.getHeigthField(),
     },
@@ -38,10 +38,10 @@ const style = StyleSheet.create({
         fontWeight: "700"
     },
     TextWhenX: {
-        color: '#FF6F61'
+        color: '#000'
     },
     TextWhenO: {
-        color: '#6EC6FF'
+        color: '#0009'
     }
 })
 

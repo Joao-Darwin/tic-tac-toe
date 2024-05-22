@@ -7,37 +7,39 @@ interface Props {
 }
 
 const styles = StyleSheet.create({
-    Score: {
-        gap: 10,
-        justifyContent: 'center',
-        alignItems: 'center'
-    },
-    ViewWithName: {
+    card: {
         borderRadius: 10,
-        padding: 10,
-        backgroundColor: '#003F91',
-        justifyContent: 'center',
-        alignItems: 'center'
-    },
-    Text: {
-        fontWeight: '600',
-        fontSize: 30,
-        color: '#FFF',
-    },
-    TextScore: {
-        fontWeight: '600',
-        fontSize: 60,
-        color: '#FFF',
-    }
+        padding: 20,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.3,
+        shadowRadius: 3,
+        elevation: 5,
+        backgroundColor: '#fff',
+        alignItems: 'center',
+        margin: 10,
+      },
+      scoreBox: {
+        alignItems: 'center',
+      },
+      playerText: {
+        fontSize: 18,
+        fontWeight: '500',
+      },
+      scoreText: {
+        fontSize: 40,
+        fontWeight: 'bold',
+        color: '#2d3436',
+      },
 })
 
 function Score({ name, score }: Props): React.JSX.Element {
     return (
-        <View style={styles.Score}>
-            <View style={styles.ViewWithName}>
-                <Text style={styles.Text}>{name}</Text>
+        <View style={styles.card}>
+            <View style={styles.scoreBox}>
+                <Text style={styles.playerText}>{name}</Text>
+                <Text style={styles.scoreText}>{score}</Text>
             </View>
-            <Text style={styles.TextScore}>{score}</Text>
         </View>
     )
 }
