@@ -2,8 +2,6 @@ import React from "react";
 import { Button, Dimensions, GestureResponderEvent, StyleSheet, View } from "react-native";
 
 interface Props {
-    title: string,
-    color: string,
     onPress: ((event: GestureResponderEvent) => void) | undefined
 }
 
@@ -14,10 +12,10 @@ const styles = StyleSheet.create({
     }
 })
 
-function RestartButton({ title, color, onPress }: Props): React.JSX.Element {
+function RestartButton({ onPress }: Props): React.JSX.Element {
     return (
         <View style={styles.RestartButton}>
-            <Button title={title} color={color} onPress={onPress} />
+            <Button title="Restart" color={'#000'} onPress={onPress} />
         </View>
     )
 }
