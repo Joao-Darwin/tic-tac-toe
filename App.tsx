@@ -9,8 +9,9 @@ import {
 } from 'react-native';
 import Board from './src/components/Board';
 import Field from './src/components/Field';
-import gameLogic from './src/utils/gameLogic';
 import Score from './src/components/Score';
+import gameLogic from './src/utils/gameLogic';
+import RestartButton from './src/components/RestartButton';
 
 const style = StyleSheet.create({
   App: {
@@ -88,6 +89,11 @@ function App(): React.JSX.Element {
     setBoard(gameLogic.createVoidBoard());
   }
 
+  const onPressRestartButton = () => {
+    restartBoard();
+    setObservationBoardMode(false);
+  }
+
   return (
     <SafeAreaView style={style.App}>
       <View style={style.ScoreBoard}>
@@ -95,6 +101,7 @@ function App(): React.JSX.Element {
         <Score name='Player 02' score={scorePlayer02} />
       </View>
       <Text style={style.Text}>Vez de {timeToPlay}</Text>
+      {observationBoardMode && <RestartButton onPress={onPressRestartButton}/>}
       <Board>
         <Field boardValueField={board[0][0]} row={0} column={0} onPress={onPressField} borderRight borderBottom />
         <Field boardValueField={board[0][1]} row={0} column={1} onPress={onPressField} borderBottom />
